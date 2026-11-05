@@ -103,16 +103,14 @@ const CAROUSEL_VIDEOS = [
 ];
 
 const CAROUSEL_PHOTOS = [
-  '/public/assets/aistudio/photo1_aacdf014.jpeg',
-  '/public/assets/aistudio/photo2_42d779a0.jpeg',
-  '/public/assets/aistudio/photo3_7b36fdf0.jpeg',
-  '/public/assets/aistudio/photo4_122fee53.jpeg',
-  '/public/assets/aistudio/photo5_9fdb2baf.jpeg',
-  '/public/assets/aistudio/photo6_9edb8294.jpeg',
-  '/public/assets/aistudio/photo7_6c29277a.jpeg',
-  '/public/assets/aistudio/photo8_82f846af.jpeg',
-  '/public/assets/aistudio/photo9_e2849846.jpeg',
-  '/public/assets/aistudio/photo10_4aff4761.jpeg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793893855/photo1.jpg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894347/photo8.jpg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894347/photo2.jpg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894348/photo7.jpg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894348/photo10.jpg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894348/photo5.jpg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894348/photo4.jpg',
+  'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894348/photo6.jpg'
 ];
 
 interface YTLiveStream {
