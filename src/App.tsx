@@ -175,7 +175,7 @@ export default function App() {
     if (isVidPaused) return;
     const interval = setInterval(() => {
       setCurrentVidIndex((prev) => (prev + 1) % CAROUSEL_VIDEOS.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(interval);
   }, [isVidPaused]);
 
