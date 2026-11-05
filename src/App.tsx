@@ -89,28 +89,28 @@ const MUSIC_PROJECTS: MusicProject[] = [
 ];
 
 const CAROUSEL_VIDEOS = [
-  '/public/assets/aistudio/vid1_8c2ec941.mp4',
-  '/public/assets/aistudio/vid9_46c42222.mp4',
-  '/public/assets/aistudio/vid10_11c2625f.mp4',
-  '/public/assets/aistudio/vid11_38da8ff3.mp4',
-  '/public/vid3.mp4',
-  '/public/vid4.mp4',
-  '/public/vid5.mp4',
-  '/public/vid6.mp4',
-  '/public/vid7.mp4',
+  '/assets/aistudio/vid1_8c2ec941.mp4',
+  '/assets/aistudio/vid9_46c42222.mp4',
+  '/assets/aistudio/vid10_11c2625f.mp4',
+  '/assets/aistudio/vid11_38da8ff3.mp4',
+  '/vid3.mp4',
+  '/vid4.mp4',
+  '/vid5.mp4',
+  '/vid6.mp4',
+  '/vid7.mp4',
 ];
 
 const CAROUSEL_PHOTOS = [
-  '/public/assets/aistudio/photo1_aacdf014.jpeg',
-  '/public/assets/aistudio/photo2_42d779a0.jpeg',
-  '/public/assets/aistudio/photo3_7b36fdf0.jpeg',
-  '/public/assets/aistudio/photo4_122fee53.jpeg',
-  '/public/assets/aistudio/photo5_9fdb2baf.jpeg',
-  '/public/assets/aistudio/photo6_9edb8294.jpeg',
-  '/public/assets/aistudio/photo7_6c29277a.jpeg',
-  '/public/assets/aistudio/photo8_82f846af.jpeg',
-  '/public/assets/aistudio/photo9_e2849846.jpeg',
-  '/public/assets/aistudio/photo10_4aff4761.jpeg',
+  '/assets/aistudio/photo1_aacdf014.jpeg',
+  '/assets/aistudio/photo2_42d779a0.jpeg',
+  '/assets/aistudio/photo3_7b36fdf0.jpeg',
+  '/assets/aistudio/photo4_122fee53.jpeg',
+  '/assets/aistudio/photo5_9fdb2baf.jpeg',
+  '/assets/aistudio/photo6_9edb8294.jpeg',
+  '/assets/aistudio/photo7_6c29277a.jpeg',
+  '/assets/aistudio/photo8_82f846af.jpeg',
+  '/assets/aistudio/photo9_e2849846.jpeg',
+  '/assets/aistudio/photo10_4aff4761.jpeg',
 ];
 
 interface YTLiveStream {
