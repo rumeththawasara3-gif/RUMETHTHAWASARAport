@@ -89,15 +89,17 @@ const MUSIC_PROJECTS: MusicProject[] = [
 ];
 
 const CAROUSEL_VIDEOS = [
-  '/public/assets/aistudio/vid1_8c2ec941.mp4',
-  '/public/assets/aistudio/vid9_46c42222.mp4',
-  '/public/assets/aistudio/vid10_11c2625f.mp4',
-  '/public/assets/aistudio/vid11_38da8ff3.mp4',
-  '/public/vid3.mp4',
-  '/public/vid4.mp4',
-  '/public/vid5.mp4',
-  '/public/vid6.mp4',
-  '/public/vid7.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894057/vid1.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894059/vid2.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894059/vid3.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894059/vid4.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894059/vid5.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894060/vid6.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894059/vid7.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894069/vid8.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894061/vid9.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894060/vid10.mp4',
+  'https://res.cloudinary.com/k14qmg0t/video/upload/v1793894061/vid11.mp4'
 ];
 
 const CAROUSEL_PHOTOS = [
