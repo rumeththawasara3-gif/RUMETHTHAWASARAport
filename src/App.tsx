@@ -416,12 +416,12 @@ export default function App() {
 
           <div className="flex items-center gap-3 shrink-0">
             <a
-              href="https://loopstudio.rumeththawasara.lk/"
+              href="https://kultstudio.rumeththawasara.lk/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-neutral-200 bg-neutral-800/90 hover:bg-neutral-800 rounded-md border border-neutral-700 hover:border-neutral-500 transition-all duration-200 shadow-sm whitespace-nowrap shrink-0 flex items-center gap-1.5"
             >
-              <span>Loop Studio</span>
+              <span>KULT Studio</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400" />
             </a>
             <a
@@ -465,18 +465,18 @@ export default function App() {
               </h1>
 
               <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
+                <span className="px-3.5 py-1.5 rounded-full bg-neutral-900/90 border border-neutral-700/80 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-300 shadow-sm text-interactive">
+                  CO-FOUNDER • LOOP STUDIO
+                </span>
                 <a
-                  href="https://loopstudio.rumeththawasara.lk/"
+                  href="https://kultstudio.rumeththawasara.lk/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3.5 py-1.5 rounded-full bg-neutral-900/90 border border-neutral-700/80 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-white hover:border-neutral-500 shadow-sm text-interactive inline-flex items-center gap-1.5 transition-all"
                 >
-                  <span>CO-FOUNDER • LOOP STUDIOS</span>
+                  <span>FOUNDER • KULT STUDIO</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400" />
                 </a>
-                <span className="px-3.5 py-1.5 rounded-full bg-neutral-900/90 border border-neutral-700/80 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-300 shadow-sm text-interactive">
-                  FOUNDER • KULT STUDIO
-                </span>
               </div>
 
               <div className="pt-2">
@@ -650,7 +650,7 @@ export default function App() {
                     Growth demands sacrifice and calculated pivots.
                   </h3>
                   <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-normal">
-                    The release of the album DEATH OF AN ARTIST marked the intentional closure of Kult Studio. It wasn't an end, but an evolution to conquer workload fatigue. Today, he quietly builds the next era of digital media with Loop.
+                    The release of the album DEATH OF AN ARTIST marked the intentional closure of KULT Studio. It wasn't an end, but an evolution to conquer workload fatigue. Today, he quietly builds the next era of digital media with KULT Studio.
                   </p>
                 </div>
               </div>
