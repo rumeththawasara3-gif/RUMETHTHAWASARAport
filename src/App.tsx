@@ -232,7 +232,7 @@ export default function App() {
   const nextPhoto = () => setCurrentPhotoIndex((prev) => (prev + 1) % CAROUSEL_PHOTOS.length);
   const prevPhoto = () => setCurrentPhotoIndex((prev) => (prev - 1 + CAROUSEL_PHOTOS.length) % CAROUSEL_PHOTOS.length);
 
-  const handleReviewSubmit = (e: React.FormEvent) => {
+  const handleReviewSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newReviewName.trim() || !newReviewComment.trim()) return;
 
@@ -244,11 +244,27 @@ export default function App() {
       date: 'Just now'
     };
 
+    try {
+      await fetch('https://formspree.io/f/xoeeovab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: newReviewName.trim(),
+          rating: newReviewRating,
+          stars: newReviewRating,
+          message: newReviewComment.trim(),
+          comment: newReviewComment.trim()
+        })
+      });
+    } catch (err) {
+      console.error('Formspree submit error:', err);
+    }
+
     setReviews([newReview, ...reviews]);
     setNewReviewName('');
     setNewReviewRating('5');
     setNewReviewComment('');
-    alert('Thank you! Your review has been successfully published.');
+    alert('Thank you! Your review has been successfully submitted and published.');
 
     const reviewsEl = document.getElementById('native-reviews');
     if (reviewsEl) {
@@ -1119,12 +1135,15 @@ export default function App() {
 
             <form 
               onSubmit={handleReviewSubmit}
+              action="https://formspree.io/f/xoeeovab"
+              method="POST"
               className="bg-neutral-900/90 border border-neutral-800 rounded-2xl p-6 sm:p-10 space-y-6 shadow-2xl"
             >
               <div className="space-y-2">
                 <label className="block text-xs font-mono uppercase tracking-wider text-neutral-300">Your Name / Brand</label>
                 <input 
                   type="text" 
+                  name="name"
                   value={newReviewName}
                   onChange={(e) => setNewReviewName(e.target.value)}
                   required 
@@ -1136,6 +1155,7 @@ export default function App() {
               <div className="space-y-2">
                 <label className="block text-xs font-mono uppercase tracking-wider text-neutral-300">Star Rating</label>
                 <select 
+                  name="rating"
                   value={newReviewRating}
                   onChange={(e) => setNewReviewRating(e.target.value)}
                   required
@@ -1147,11 +1167,13 @@ export default function App() {
                   <option value="2">★★☆☆☆ (2/5 - Fair)</option>
                   <option value="1">★☆☆☆☆ (1/5 - Poor)</option>
                 </select>
+                <input type="hidden" name="stars" value={newReviewRating} />
               </div>
 
               <div className="space-y-2">
                 <label className="block text-xs font-mono uppercase tracking-wider text-neutral-300">Comments / Feedback</label>
                 <textarea 
+                  name="message"
                   value={newReviewComment}
                   onChange={(e) => setNewReviewComment(e.target.value)}
                   required 
@@ -1159,6 +1181,7 @@ export default function App() {
                   placeholder="Write your review about the audiovisual production or marketing campaign..."
                   className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-600 focus:outline-none focus:border-pink-500 transition-colors text-sm resize-none"
                 />
+                <input type="hidden" name="comment" value={newReviewComment} />
               </div>
 
               <button 
