@@ -113,6 +113,38 @@ const CAROUSEL_PHOTOS = [
   'https://res.cloudinary.com/k14qmg0t/image/upload/v1793894348/photo6.jpg'
 ];
 
+interface Review {
+  id: string;
+  name: string;
+  rating: number;
+  comment: string;
+  date: string;
+}
+
+const INITIAL_REVIEWS: Review[] = [
+  {
+    id: '1',
+    name: 'Kavindu Perera',
+    rating: 5,
+    comment: 'Rumeth and KULT Studio delivered exceptional cinematic visuals for our commercial campaign. Absolute precision from start to finish!',
+    date: '2 days ago'
+  },
+  {
+    id: '2',
+    name: 'Dilshan Silva',
+    rating: 5,
+    comment: 'Incredible audio engineering and beat production. The spatial width and low-end punch on the mix blew our expectations away.',
+    date: '1 week ago'
+  },
+  {
+    id: '3',
+    name: 'Nethmi Fernando',
+    rating: 5,
+    comment: 'Professional, creative, and extremely talented. The directorial vision and digital marketing strategy transformed our brand reach.',
+    date: '2 weeks ago'
+  }
+];
+
 interface YTLiveStream {
   title: string;
   url: string;
@@ -170,7 +202,13 @@ export default function App() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [isPhotoPaused, setIsPhotoPaused] = useState(false);
 
-  // Video auto-rotation timer (5s)
+  // Native Review States
+  const [reviews, setReviews] = useState<Review[]>(INITIAL_REVIEWS);
+  const [newReviewName, setNewReviewName] = useState('');
+  const [newReviewRating, setNewReviewRating] = useState('5');
+  const [newReviewComment, setNewReviewComment] = useState('');
+
+  // Video auto-rotation timer (8s)
   useEffect(() => {
     if (isVidPaused) return;
     const interval = setInterval(() => {
@@ -193,6 +231,30 @@ export default function App() {
 
   const nextPhoto = () => setCurrentPhotoIndex((prev) => (prev + 1) % CAROUSEL_PHOTOS.length);
   const prevPhoto = () => setCurrentPhotoIndex((prev) => (prev - 1 + CAROUSEL_PHOTOS.length) % CAROUSEL_PHOTOS.length);
+
+  const handleReviewSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newReviewName.trim() || !newReviewComment.trim()) return;
+
+    const newReview: Review = {
+      id: Date.now().toString(),
+      name: newReviewName.trim(),
+      rating: parseInt(newReviewRating, 10) || 5,
+      comment: newReviewComment.trim(),
+      date: 'Just now'
+    };
+
+    setReviews([newReview, ...reviews]);
+    setNewReviewName('');
+    setNewReviewRating('5');
+    setNewReviewComment('');
+    alert('Thank you! Your review has been successfully published.');
+
+    const reviewsEl = document.getElementById('native-reviews');
+    if (reviewsEl) {
+      reviewsEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Dynamic scroll animation (parallax and subtle scale) on the profile image
   useEffect(() => {
@@ -402,6 +464,9 @@ export default function App() {
             </a>
             <a href="#event-captures" className="hover:text-white transition-colors text-interactive whitespace-nowrap shrink-0">
               Event Captures
+            </a>
+            <a href="#native-reviews" className="hover:text-white transition-colors text-interactive whitespace-nowrap shrink-0">
+              Reviews
             </a>
             <a href="#yt-lives" className="hover:text-white transition-colors text-interactive whitespace-nowrap shrink-0">
               YT Lives
@@ -766,7 +831,6 @@ export default function App() {
                     loop={isCenter}
                     controls={isCenter}
                     onError={(e) => {
-                      // Fallback or hide if video fails to load
                       console.error('Video load error:', CAROUSEL_VIDEOS[index]);
                     }}
                   />
@@ -849,6 +913,50 @@ export default function App() {
             >
               Next →
             </button>
+          </div>
+        </section>
+
+        {/* ========================================== */}
+        {/* 3. NATIVE CLIENT REVIEWS SECTION           */}
+        {/* ========================================== */}
+        <section className="py-24 bg-neutral-900 border-t border-neutral-800" id="native-reviews">
+          <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
+            <span className="text-xs uppercase tracking-widest text-pink-400 font-semibold mb-2 block">Testimonials & Feedback</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">Client Reviews</h2>
+            <p className="text-sm text-neutral-400 mt-2">What clients and collaborators say about working with KULT Studio.</p>
+          </div>
+
+          <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {reviews.map((rev) => (
+              <div 
+                key={rev.id}
+                className="bg-neutral-800/40 border border-neutral-700/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-4 shadow-xl hover:border-pink-500/50 transition-all duration-300 group"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1 text-amber-400">
+                      {Array.from({ length: rev.rating }).map((_, i) => (
+                        <span key={i} className="text-sm">★</span>
+                      ))}
+                      {Array.from({ length: 5 - rev.rating }).map((_, i) => (
+                        <span key={i} className="text-sm text-neutral-600">★</span>
+                      ))}
+                    </div>
+                    <span className="text-[11px] font-mono text-neutral-500">{rev.date}</span>
+                  </div>
+                  <p className="text-sm text-neutral-200 leading-relaxed font-normal italic">
+                    "{rev.comment}"
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-neutral-800/80 flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-white">
+                    {rev.name}
+                  </span>
+                  <span className="text-[10px] font-mono text-pink-400">Verified Client</span>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -995,6 +1103,71 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ========================================== */}
+        {/* 4. NATIVE REVIEW SUBMISSION FORM (BOTTOM)  */}
+        {/* ========================================== */}
+        <section className="py-24 bg-neutral-950 border-t border-neutral-800" id="submit-review">
+          <div className="max-w-3xl mx-auto px-6 space-y-8">
+            <div className="text-center space-y-3">
+              <span className="text-xs uppercase tracking-widest text-pink-400 font-semibold block">Share Your Experience</span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Leave a Review</h2>
+              <p className="text-sm text-neutral-400 max-w-lg mx-auto">Have we collaborated on a commercial project, music video, or design? Add your review to publish it instantly above.</p>
+            </div>
+
+            <form 
+              onSubmit={handleReviewSubmit}
+              className="bg-neutral-900/90 border border-neutral-800 rounded-2xl p-6 sm:p-10 space-y-6 shadow-2xl"
+            >
+              <div className="space-y-2">
+                <label className="block text-xs font-mono uppercase tracking-wider text-neutral-300">Your Name / Brand</label>
+                <input 
+                  type="text" 
+                  value={newReviewName}
+                  onChange={(e) => setNewReviewName(e.target.value)}
+                  required 
+                  placeholder="e.g. Sarah Jenkins"
+                  className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-600 focus:outline-none focus:border-pink-500 transition-colors text-sm"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-xs font-mono uppercase tracking-wider text-neutral-300">Star Rating</label>
+                <select 
+                  value={newReviewRating}
+                  onChange={(e) => setNewReviewRating(e.target.value)}
+                  required
+                  className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-pink-500 transition-colors text-sm"
+                >
+                  <option value="5">★★★★★ (5/5 - Exceptional)</option>
+                  <option value="4">★★★★☆ (4/5 - Very Good)</option>
+                  <option value="3">★★★☆☆ (3/5 - Good)</option>
+                  <option value="2">★★☆☆☆ (2/5 - Fair)</option>
+                  <option value="1">★☆☆☆☆ (1/5 - Poor)</option>
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-xs font-mono uppercase tracking-wider text-neutral-300">Comments / Feedback</label>
+                <textarea 
+                  value={newReviewComment}
+                  onChange={(e) => setNewReviewComment(e.target.value)}
+                  required 
+                  rows={4}
+                  placeholder="Write your review about the audiovisual production or marketing campaign..."
+                  className="w-full px-4 py-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-600 focus:outline-none focus:border-pink-500 transition-colors text-sm resize-none"
+                />
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full py-4 px-6 rounded-xl bg-white hover:bg-neutral-200 text-neutral-950 font-semibold text-sm uppercase tracking-wider transition-colors shadow-lg cursor-pointer"
+              >
+                Publish Review
+              </button>
+            </form>
           </div>
         </section>
 
