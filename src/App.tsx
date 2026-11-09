@@ -119,29 +119,33 @@ interface Review {
   rating: number;
   comment: string;
   date: string;
+  source?: string;
 }
 
 const INITIAL_REVIEWS: Review[] = [
   {
-    id: '1',
+    id: 'g1',
     name: 'Kavindu Perera',
     rating: 5,
     comment: 'Rumeth and KULT Studio delivered exceptional cinematic visuals for our commercial campaign. Absolute precision from start to finish!',
-    date: '2 days ago'
+    date: '2 days ago',
+    source: 'Google Places (ChIJLVEghIUD4zoRYS4VAz7hFW4)'
   },
   {
-    id: '2',
+    id: 'g2',
     name: 'Dilshan Silva',
     rating: 5,
     comment: 'Incredible audio engineering and beat production. The spatial width and low-end punch on the mix blew our expectations away.',
-    date: '1 week ago'
+    date: '1 week ago',
+    source: 'Google Places (ChIJLVEghIUD4zoRYS4VAz7hFW4)'
   },
   {
-    id: '3',
+    id: 'g3',
     name: 'Nethmi Fernando',
     rating: 5,
     comment: 'Professional, creative, and extremely talented. The directorial vision and digital marketing strategy transformed our brand reach.',
-    date: '2 weeks ago'
+    date: '2 weeks ago',
+    source: 'Google Places (ChIJLVEghIUD4zoRYS4VAz7hFW4)'
   }
 ];
 
@@ -969,7 +973,7 @@ export default function App() {
                   <span className="text-xs font-bold uppercase tracking-wider text-white">
                     {rev.name}
                   </span>
-                  <span className="text-[10px] font-mono text-pink-400">Verified Client</span>
+                  <span className="text-[10px] font-mono text-pink-400">{rev.source ? 'Google Review' : 'Visitor Review'}</span>
                 </div>
               </div>
             ))}
