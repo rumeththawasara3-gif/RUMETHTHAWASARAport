@@ -193,6 +193,13 @@ const YT_LIVES: YTLiveStream[] = [
     category: 'Special Road Trip',
     bgGradient: 'from-teal-950/50 via-neutral-900 to-neutral-950'
   },
+  {
+    title: 'GTA VI | LIVE STREAM',
+    url: 'https://www.youtube.com/live/no-siFOFuts?si=eA8f_-wqrBw53hj2',
+    youtubeId: 'no-siFOFuts',
+    category: 'Gameplay Stream',
+    bgGradient: 'from-amber-950/50 via-neutral-900 to-neutral-950'
+  },
 ];
 
 export default function App() {
